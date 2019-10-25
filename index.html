@@ -14,10 +14,10 @@
 
         <div class="container" id="app">
             <h3 class="text-center">Shop-product</h3>
-            <form method="POST" id="form" @submit="sendForm">
-                <input type="text" v-model="nameProduct" placeholder="Название товара" required>
-                <input type="text" v-model="descriptionProduct" placeholder="Описание товара" required>
-                <input type="number" v-model="priceProduct" placeholder="Цена товара" required>
+            <form method="POST" id="form" @submit.prevent="sendForm">
+                <input type="text" v-model="nameProduct" minlength="3" placeholder="Название товара" required>
+                <input type="text" v-model="descriptionProduct" minlength="10" maxlength="100" placeholder="Описание товара" required>
+                <input type="number" v-model="priceProduct" placeholder="Цена товара" @keypress="onlyNumber" required>
                 <button type="submit">Отправить</button>
             </form>
             <br>
@@ -40,7 +40,6 @@
                 </div>
             </div>
         </div>
-            
 
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
