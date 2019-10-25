@@ -7,27 +7,35 @@
     <title>Shop-Vue</title>
     <meta name="description" content="shop-vue">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
 
         <div class="container" id="app">
-            <h3 class="text-center">Product</h3>
-            <input type="text" v-model="postBody" @change="sendPost()"/>
-            <div class="columns medium-4" v-for="(result, index) in results">
-                <div class="card">
-                    <div class="card-section">
-                        <p>{{ index }} </p>
-                    </div>
-                    <div class="card-divider">
-                        <p>{{ result.name }}</p>
-                    </div>
-                    <div class="card-section">
-                        <p>{{ result.info }}</p>
-                    </div>
-                    <div class="card-section">
-                        <p>&#8364{{ result.price }}</p>
+            <h3 class="text-center">Shop-product</h3>
+            <form method="POST" id="form" @submit="sendForm">
+                <input type="text" v-model="nameProduct" placeholder="Название товара" required>
+                <input type="text" v-model="descriptionProduct" placeholder="Описание товара" required>
+                <input type="number" v-model="priceProduct" placeholder="Цена товара" required>
+                <button type="submit">Отправить</button>
+            </form>
+            <br>
+            <div class="container-product">
+                <div class="box-product" v-for="(result, index) in results">
+                    <div class="card">
+                        <div class="card-section">
+                            <p>{{ index }} </p>
+                        </div>
+                        <div class="card-name">
+                            <p>Name: {{ result.name }}</p>
+                        </div>
+                        <div class="card-text">
+                            <p>Desciption {{ result.info }}</p>
+                        </div>
+                        <div class="card-price">
+                            <p>Price {{ result.price }}</p>
+                        </div>
                     </div>
                 </div>
             </div>

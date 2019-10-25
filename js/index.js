@@ -2,17 +2,25 @@ new Vue({
     el: '#app',
     data: {
         results: [],
-        postBody: '',
+        nameProduct: null,
+        descriptionProduct: null,
+        priceProduct: null,
     },
     methods: {
-        sendPost() {
-            axios.post('mail.php', {
-                body: this.postBody
+        sendForm(e) {
+            e.preventDefault();
+
+            axios.post('send.php',{
+                name: this.nameProduct,
+                desc: this.descriptionProduct,
+                price: this.priceProduct
             })
-            .then(response =>{
-                console.log(response)
+
+            .then (response =>{
+                console.log(response);
+                alert("ok");
             })
-            .catch(error => {
+            .then (error => {
                 console.log(error);
             })
         }
